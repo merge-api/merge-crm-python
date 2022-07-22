@@ -11,11 +11,13 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.stage import Stage
 globals()['Stage'] = Stage
 from MergeCRMClient.model.paginated_stage_list import PaginatedStageList
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestPaginatedStageList(unittest.TestCase):
@@ -31,7 +33,22 @@ class TestPaginatedStageList(unittest.TestCase):
         """Test PaginatedStageList"""
         # FIXME: construct object with mandatory attributes with example values
         # model = PaginatedStageList()  # noqa: E501
-        pass
+
+        """
+        No test json responses were defined for PaginatedStageList
+        """
+        raw_json = None
+
+        if raw_json is None:
+            return
+
+        response_mock = MagicMock()
+        response_mock.data = raw_json
+
+        deserialized = ApiClient().deserialize(response_mock, (PaginatedStageList,), False)
+
+        assert deserialized is not None
+
 
 
 if __name__ == '__main__':

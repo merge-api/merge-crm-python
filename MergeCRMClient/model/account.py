@@ -30,8 +30,10 @@ from MergeCRMClient.model_utils import (  # noqa: F401
 def lazy_import():
     from MergeCRMClient.model.address import Address
     from MergeCRMClient.model.phone_number import PhoneNumber
+    from MergeCRMClient.model.remote_data import RemoteData
     globals()['Address'] = Address
     globals()['PhoneNumber'] = PhoneNumber
+    globals()['RemoteData'] = RemoteData
 
 
 class Account(ModelNormal):
@@ -100,6 +102,8 @@ class Account(ModelNormal):
             'last_activity_at': (datetime, none_type,),  # noqa: E501
             'remote_updated_at': (datetime, none_type,),  # noqa: E501
             'remote_created_at': (datetime, none_type,),  # noqa: E501
+            'remote_data': ([RemoteData], none_type,),  # noqa: E501
+            'remote_was_deleted': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -121,6 +125,8 @@ class Account(ModelNormal):
         'last_activity_at': 'last_activity_at',  # noqa: E501
         'remote_updated_at': 'remote_updated_at',  # noqa: E501
         'remote_created_at': 'remote_created_at',  # noqa: E501
+        'remote_data': 'remote_data',  # noqa: E501
+        'remote_was_deleted': 'remote_was_deleted',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -182,6 +188,8 @@ class Account(ModelNormal):
             last_activity_at (datetime, none_type): When the account's last activity  occurred.. [optional]  # noqa: E501
             remote_updated_at (datetime, none_type): When the third party's account was updated.. [optional]  # noqa: E501
             remote_created_at (datetime, none_type): When the third party's account was created.. [optional]  # noqa: E501
+            remote_data ([RemoteData], none_type): [optional]  # noqa: E501
+            remote_was_deleted (bool): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

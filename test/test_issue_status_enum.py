@@ -11,9 +11,11 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.issue_status_enum import IssueStatusEnum
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestIssueStatusEnum(unittest.TestCase):
@@ -29,8 +31,9 @@ class TestIssueStatusEnum(unittest.TestCase):
         """Test IssueStatusEnum"""
         # FIXME: construct object with mandatory attributes with example values
         # model = IssueStatusEnum()  # noqa: E501
-        pass
 
+        # no tests for enums
+        pass
 
 if __name__ == '__main__':
     unittest.main()

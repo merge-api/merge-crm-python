@@ -11,9 +11,11 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.opportunity_status_enum import OpportunityStatusEnum
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestOpportunityStatusEnum(unittest.TestCase):
@@ -29,8 +31,9 @@ class TestOpportunityStatusEnum(unittest.TestCase):
         """Test OpportunityStatusEnum"""
         # FIXME: construct object with mandatory attributes with example values
         # model = OpportunityStatusEnum()  # noqa: E501
-        pass
 
+        # no tests for enums
+        pass
 
 if __name__ == '__main__':
     unittest.main()

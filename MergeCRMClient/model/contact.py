@@ -31,9 +31,11 @@ def lazy_import():
     from MergeCRMClient.model.address import Address
     from MergeCRMClient.model.email_address import EmailAddress
     from MergeCRMClient.model.phone_number import PhoneNumber
+    from MergeCRMClient.model.remote_data import RemoteData
     globals()['Address'] = Address
     globals()['EmailAddress'] = EmailAddress
     globals()['PhoneNumber'] = PhoneNumber
+    globals()['RemoteData'] = RemoteData
 
 
 class Contact(ModelNormal):
@@ -92,6 +94,8 @@ class Contact(ModelNormal):
             'phone_numbers': ([PhoneNumber],),  # noqa: E501
             'last_activity_at': (datetime, none_type,),  # noqa: E501
             'remote_created_at': (datetime, none_type,),  # noqa: E501
+            'remote_data': ([RemoteData], none_type,),  # noqa: E501
+            'remote_was_deleted': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -110,6 +114,8 @@ class Contact(ModelNormal):
         'phone_numbers': 'phone_numbers',  # noqa: E501
         'last_activity_at': 'last_activity_at',  # noqa: E501
         'remote_created_at': 'remote_created_at',  # noqa: E501
+        'remote_data': 'remote_data',  # noqa: E501
+        'remote_was_deleted': 'remote_was_deleted',  # noqa: E501
     }
 
     _composed_schemas = {}
@@ -168,6 +174,8 @@ class Contact(ModelNormal):
             phone_numbers ([PhoneNumber]): [optional]  # noqa: E501
             last_activity_at (datetime, none_type): When the contact's last activity occurred.. [optional]  # noqa: E501
             remote_created_at (datetime, none_type): When the third party's contact was created.. [optional]  # noqa: E501
+            remote_data ([RemoteData], none_type): [optional]  # noqa: E501
+            remote_was_deleted (bool): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

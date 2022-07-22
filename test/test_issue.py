@@ -11,11 +11,13 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.issue_status_enum import IssueStatusEnum
 globals()['IssueStatusEnum'] = IssueStatusEnum
 from MergeCRMClient.model.issue import Issue
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestIssue(unittest.TestCase):
@@ -31,7 +33,23 @@ class TestIssue(unittest.TestCase):
         """Test Issue"""
         # FIXME: construct object with mandatory attributes with example values
         # model = Issue()  # noqa: E501
-        pass
+
+        """
+        No test json responses were defined for Issue
+        """
+        raw_json = None
+
+        if raw_json is None:
+            return
+
+        response_mock = MagicMock()
+        response_mock.data = raw_json
+
+        deserialized = ApiClient().deserialize(response_mock, (Issue,), False)
+
+        assert deserialized is not None
+
+        assert deserialized.error_description is not None
 
 
 if __name__ == '__main__':

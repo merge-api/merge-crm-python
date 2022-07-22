@@ -11,11 +11,13 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.lead import Lead
 globals()['Lead'] = Lead
 from MergeCRMClient.model.paginated_lead_list import PaginatedLeadList
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestPaginatedLeadList(unittest.TestCase):
@@ -31,7 +33,22 @@ class TestPaginatedLeadList(unittest.TestCase):
         """Test PaginatedLeadList"""
         # FIXME: construct object with mandatory attributes with example values
         # model = PaginatedLeadList()  # noqa: E501
-        pass
+
+        """
+        No test json responses were defined for PaginatedLeadList
+        """
+        raw_json = None
+
+        if raw_json is None:
+            return
+
+        response_mock = MagicMock()
+        response_mock.data = raw_json
+
+        deserialized = ApiClient().deserialize(response_mock, (PaginatedLeadList,), False)
+
+        assert deserialized is not None
+
 
 
 if __name__ == '__main__':

@@ -11,11 +11,13 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.note_request import NoteRequest
 globals()['NoteRequest'] = NoteRequest
 from MergeCRMClient.model.note_endpoint_request import NoteEndpointRequest
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestNoteEndpointRequest(unittest.TestCase):
@@ -31,7 +33,23 @@ class TestNoteEndpointRequest(unittest.TestCase):
         """Test NoteEndpointRequest"""
         # FIXME: construct object with mandatory attributes with example values
         # model = NoteEndpointRequest()  # noqa: E501
-        pass
+
+        """
+        No test json responses were defined for NoteEndpointRequest
+        """
+        raw_json = None
+
+        if raw_json is None:
+            return
+
+        response_mock = MagicMock()
+        response_mock.data = raw_json
+
+        deserialized = ApiClient().deserialize(response_mock, (NoteEndpointRequest,), False)
+
+        assert deserialized is not None
+
+        assert deserialized.model is not None
 
 
 if __name__ == '__main__':

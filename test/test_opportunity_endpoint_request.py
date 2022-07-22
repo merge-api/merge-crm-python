@@ -11,11 +11,13 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.opportunity_request import OpportunityRequest
 globals()['OpportunityRequest'] = OpportunityRequest
 from MergeCRMClient.model.opportunity_endpoint_request import OpportunityEndpointRequest
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestOpportunityEndpointRequest(unittest.TestCase):
@@ -31,7 +33,23 @@ class TestOpportunityEndpointRequest(unittest.TestCase):
         """Test OpportunityEndpointRequest"""
         # FIXME: construct object with mandatory attributes with example values
         # model = OpportunityEndpointRequest()  # noqa: E501
-        pass
+
+        """
+        No test json responses were defined for OpportunityEndpointRequest
+        """
+        raw_json = None
+
+        if raw_json is None:
+            return
+
+        response_mock = MagicMock()
+        response_mock.data = raw_json
+
+        deserialized = ApiClient().deserialize(response_mock, (OpportunityEndpointRequest,), False)
+
+        assert deserialized is not None
+
+        assert deserialized.model is not None
 
 
 if __name__ == '__main__':

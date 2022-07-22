@@ -11,9 +11,11 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.categories_enum import CategoriesEnum
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestCategoriesEnum(unittest.TestCase):
@@ -29,8 +31,9 @@ class TestCategoriesEnum(unittest.TestCase):
         """Test CategoriesEnum"""
         # FIXME: construct object with mandatory attributes with example values
         # model = CategoriesEnum()  # noqa: E501
-        pass
 
+        # no tests for enums
+        pass
 
 if __name__ == '__main__':
     unittest.main()

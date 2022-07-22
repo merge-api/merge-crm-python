@@ -11,9 +11,11 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.linked_account_status import LinkedAccountStatus
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestLinkedAccountStatus(unittest.TestCase):
@@ -29,7 +31,24 @@ class TestLinkedAccountStatus(unittest.TestCase):
         """Test LinkedAccountStatus"""
         # FIXME: construct object with mandatory attributes with example values
         # model = LinkedAccountStatus()  # noqa: E501
-        pass
+
+        """
+        No test json responses were defined for LinkedAccountStatus
+        """
+        raw_json = None
+
+        if raw_json is None:
+            return
+
+        response_mock = MagicMock()
+        response_mock.data = raw_json
+
+        deserialized = ApiClient().deserialize(response_mock, (LinkedAccountStatus,), False)
+
+        assert deserialized is not None
+
+        assert deserialized.linked_account_status is not None
+        assert deserialized.can_make_request is not None
 
 
 if __name__ == '__main__':

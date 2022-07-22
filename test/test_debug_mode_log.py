@@ -11,11 +11,13 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.debug_model_log_summary import DebugModelLogSummary
 globals()['DebugModelLogSummary'] = DebugModelLogSummary
 from MergeCRMClient.model.debug_mode_log import DebugModeLog
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestDebugModeLog(unittest.TestCase):
@@ -31,7 +33,25 @@ class TestDebugModeLog(unittest.TestCase):
         """Test DebugModeLog"""
         # FIXME: construct object with mandatory attributes with example values
         # model = DebugModeLog()  # noqa: E501
-        pass
+
+        """
+        No test json responses were defined for DebugModeLog
+        """
+        raw_json = None
+
+        if raw_json is None:
+            return
+
+        response_mock = MagicMock()
+        response_mock.data = raw_json
+
+        deserialized = ApiClient().deserialize(response_mock, (DebugModeLog,), False)
+
+        assert deserialized is not None
+
+        assert deserialized.log_id is not None
+        assert deserialized.dashboard_view is not None
+        assert deserialized.log_summary is not None
 
 
 if __name__ == '__main__':

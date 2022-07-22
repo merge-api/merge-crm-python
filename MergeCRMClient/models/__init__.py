@@ -72,6 +72,7 @@ from MergeCRMClient.model.paginated_sync_status_list import PaginatedSyncStatusL
 from MergeCRMClient.model.paginated_user_list import PaginatedUserList
 from MergeCRMClient.model.phone_number import PhoneNumber
 from MergeCRMClient.model.phone_number_request import PhoneNumberRequest
+from MergeCRMClient.model.remote_data import RemoteData
 from MergeCRMClient.model.remote_key import RemoteKey
 from MergeCRMClient.model.remote_key_for_regeneration_request import RemoteKeyForRegenerationRequest
 from MergeCRMClient.model.remote_response import RemoteResponse

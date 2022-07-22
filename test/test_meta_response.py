@@ -11,11 +11,13 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.linked_account_status import LinkedAccountStatus
 globals()['LinkedAccountStatus'] = LinkedAccountStatus
 from MergeCRMClient.model.meta_response import MetaResponse
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestMetaResponse(unittest.TestCase):
@@ -31,7 +33,25 @@ class TestMetaResponse(unittest.TestCase):
         """Test MetaResponse"""
         # FIXME: construct object with mandatory attributes with example values
         # model = MetaResponse()  # noqa: E501
-        pass
+
+        """
+        No test json responses were defined for MetaResponse
+        """
+        raw_json = None
+
+        if raw_json is None:
+            return
+
+        response_mock = MagicMock()
+        response_mock.data = raw_json
+
+        deserialized = ApiClient().deserialize(response_mock, (MetaResponse,), False)
+
+        assert deserialized is not None
+
+        assert deserialized.request_schema is not None
+        assert deserialized.has_conditional_params is not None
+        assert deserialized.has_required_linked_account_params is not None
 
 
 if __name__ == '__main__':

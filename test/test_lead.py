@@ -11,15 +11,19 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.address import Address
 from MergeCRMClient.model.email_address import EmailAddress
 from MergeCRMClient.model.phone_number import PhoneNumber
+from MergeCRMClient.model.remote_data import RemoteData
 globals()['Address'] = Address
 globals()['EmailAddress'] = EmailAddress
 globals()['PhoneNumber'] = PhoneNumber
+globals()['RemoteData'] = RemoteData
 from MergeCRMClient.model.lead import Lead
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestLead(unittest.TestCase):
@@ -35,7 +39,22 @@ class TestLead(unittest.TestCase):
         """Test Lead"""
         # FIXME: construct object with mandatory attributes with example values
         # model = Lead()  # noqa: E501
-        pass
+
+        """
+        No test json responses were defined for Lead
+        """
+        raw_json = None
+
+        if raw_json is None:
+            return
+
+        response_mock = MagicMock()
+        response_mock.data = raw_json
+
+        deserialized = ApiClient().deserialize(response_mock, (Lead,), False)
+
+        assert deserialized is not None
+
 
 
 if __name__ == '__main__':
