@@ -11,9 +11,13 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
+from MergeCRMClient.model.remote_data import RemoteData
+globals()['RemoteData'] = RemoteData
 from MergeCRMClient.model.note import Note
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestNote(unittest.TestCase):
@@ -29,7 +33,22 @@ class TestNote(unittest.TestCase):
         """Test Note"""
         # FIXME: construct object with mandatory attributes with example values
         # model = Note()  # noqa: E501
-        pass
+
+        """
+        No test json responses were defined for Note
+        """
+        raw_json = None
+
+        if raw_json is None:
+            return
+
+        response_mock = MagicMock()
+        response_mock.data = raw_json
+
+        deserialized = ApiClient().deserialize(response_mock, (Note,), False)
+
+        assert deserialized is not None
+
 
 
 if __name__ == '__main__':

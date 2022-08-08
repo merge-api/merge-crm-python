@@ -92,6 +92,7 @@ MergeCRMClient/model/paginated_sync_status_list.py
 MergeCRMClient/model/paginated_user_list.py
 MergeCRMClient/model/phone_number.py
 MergeCRMClient/model/phone_number_request.py
+MergeCRMClient/model/remote_data.py
 MergeCRMClient/model/remote_key.py
 MergeCRMClient/model/remote_key_for_regeneration_request.py
 MergeCRMClient/model/remote_response.py
@@ -187,6 +188,7 @@ docs/PassthroughApi.md
 docs/PhoneNumber.md
 docs/PhoneNumberRequest.md
 docs/RegenerateKeyApi.md
+docs/RemoteData.md
 docs/RemoteKey.md
 docs/RemoteKeyForRegenerationRequest.md
 docs/RemoteResponse.md
@@ -288,6 +290,7 @@ test/test_passthrough_api.py
 test/test_phone_number.py
 test/test_phone_number_request.py
 test/test_regenerate_key_api.py
+test/test_remote_data.py
 test/test_remote_key.py
 test/test_remote_key_for_regeneration_request.py
 test/test_remote_response.py

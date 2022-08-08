@@ -11,6 +11,7 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.account_integration import AccountIntegration
@@ -18,6 +19,7 @@ from MergeCRMClient.model.model_operation import ModelOperation
 globals()['AccountIntegration'] = AccountIntegration
 globals()['ModelOperation'] = ModelOperation
 from MergeCRMClient.model.available_actions import AvailableActions
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestAvailableActions(unittest.TestCase):
@@ -33,7 +35,24 @@ class TestAvailableActions(unittest.TestCase):
         """Test AvailableActions"""
         # FIXME: construct object with mandatory attributes with example values
         # model = AvailableActions()  # noqa: E501
-        pass
+
+        """
+        No test json responses were defined for AvailableActions
+        """
+        raw_json = None
+
+        if raw_json is None:
+            return
+
+        response_mock = MagicMock()
+        response_mock.data = raw_json
+
+        deserialized = ApiClient().deserialize(response_mock, (AvailableActions,), False)
+
+        assert deserialized is not None
+
+        assert deserialized.integration is not None
+        assert deserialized.passthrough_available is not None
 
 
 if __name__ == '__main__':

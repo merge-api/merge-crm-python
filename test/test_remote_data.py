@@ -15,13 +15,11 @@ from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.remote_data import RemoteData
-globals()['RemoteData'] = RemoteData
-from MergeCRMClient.model.user import User
 from MergeCRMClient.api_client import ApiClient
 
 
-class TestUser(unittest.TestCase):
-    """User unit test stubs"""
+class TestRemoteData(unittest.TestCase):
+    """RemoteData unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,13 +27,13 @@ class TestUser(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testUser(self):
-        """Test User"""
+    def testRemoteData(self):
+        """Test RemoteData"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = User()  # noqa: E501
+        # model = RemoteData()  # noqa: E501
 
         """
-        No test json responses were defined for User
+        No test json responses were defined for RemoteData
         """
         raw_json = None
 
@@ -45,10 +43,11 @@ class TestUser(unittest.TestCase):
         response_mock = MagicMock()
         response_mock.data = raw_json
 
-        deserialized = ApiClient().deserialize(response_mock, (User,), False)
+        deserialized = ApiClient().deserialize(response_mock, (RemoteData,), False)
 
         assert deserialized is not None
 
+        assert deserialized.path is not None
 
 
 if __name__ == '__main__':

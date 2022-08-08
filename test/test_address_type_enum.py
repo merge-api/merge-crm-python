@@ -11,9 +11,11 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.address_type_enum import AddressTypeEnum
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestAddressTypeEnum(unittest.TestCase):
@@ -29,8 +31,9 @@ class TestAddressTypeEnum(unittest.TestCase):
         """Test AddressTypeEnum"""
         # FIXME: construct object with mandatory attributes with example values
         # model = AddressTypeEnum()  # noqa: E501
-        pass
 
+        # no tests for enums
+        pass
 
 if __name__ == '__main__':
     unittest.main()

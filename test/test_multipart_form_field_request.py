@@ -11,9 +11,11 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.multipart_form_field_request import MultipartFormFieldRequest
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestMultipartFormFieldRequest(unittest.TestCase):
@@ -29,7 +31,24 @@ class TestMultipartFormFieldRequest(unittest.TestCase):
         """Test MultipartFormFieldRequest"""
         # FIXME: construct object with mandatory attributes with example values
         # model = MultipartFormFieldRequest()  # noqa: E501
-        pass
+
+        """
+        No test json responses were defined for MultipartFormFieldRequest
+        """
+        raw_json = None
+
+        if raw_json is None:
+            return
+
+        response_mock = MagicMock()
+        response_mock.data = raw_json
+
+        deserialized = ApiClient().deserialize(response_mock, (MultipartFormFieldRequest,), False)
+
+        assert deserialized is not None
+
+        assert deserialized.name is not None
+        assert deserialized.data is not None
 
 
 if __name__ == '__main__':

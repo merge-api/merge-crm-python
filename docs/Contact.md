@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **phone_numbers** | [**[PhoneNumber]**](PhoneNumber.md) |  | [optional] [readonly] 
 **last_activity_at** | **datetime, none_type** | When the contact&#39;s last activity occurred. | [optional] 
 **remote_created_at** | **datetime, none_type** | When the third party&#39;s contact was created. | [optional] 
+**remote_data** | [**[RemoteData], none_type**](RemoteData.md) |  | [optional] [readonly] 
+**remote_was_deleted** | **bool** |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

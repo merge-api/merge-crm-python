@@ -11,6 +11,7 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.contact import Contact
@@ -22,6 +23,7 @@ globals()['DebugModeLog'] = DebugModeLog
 globals()['ErrorValidationProblem'] = ErrorValidationProblem
 globals()['WarningValidationProblem'] = WarningValidationProblem
 from MergeCRMClient.model.crm_contact_response import CRMContactResponse
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestCRMContactResponse(unittest.TestCase):
@@ -37,7 +39,25 @@ class TestCRMContactResponse(unittest.TestCase):
         """Test CRMContactResponse"""
         # FIXME: construct object with mandatory attributes with example values
         # model = CRMContactResponse()  # noqa: E501
-        pass
+
+        """
+        No test json responses were defined for CRMContactResponse
+        """
+        raw_json = None
+
+        if raw_json is None:
+            return
+
+        response_mock = MagicMock()
+        response_mock.data = raw_json
+
+        deserialized = ApiClient().deserialize(response_mock, (CRMContactResponse,), False)
+
+        assert deserialized is not None
+
+        assert deserialized.model is not None
+        assert deserialized.warnings is not None
+        assert deserialized.errors is not None
 
 
 if __name__ == '__main__':

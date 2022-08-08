@@ -11,6 +11,7 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.debug_mode_log import DebugModeLog
@@ -22,6 +23,7 @@ globals()['ErrorValidationProblem'] = ErrorValidationProblem
 globals()['Note'] = Note
 globals()['WarningValidationProblem'] = WarningValidationProblem
 from MergeCRMClient.model.note_response import NoteResponse
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestNoteResponse(unittest.TestCase):
@@ -37,7 +39,25 @@ class TestNoteResponse(unittest.TestCase):
         """Test NoteResponse"""
         # FIXME: construct object with mandatory attributes with example values
         # model = NoteResponse()  # noqa: E501
-        pass
+
+        """
+        No test json responses were defined for NoteResponse
+        """
+        raw_json = None
+
+        if raw_json is None:
+            return
+
+        response_mock = MagicMock()
+        response_mock.data = raw_json
+
+        deserialized = ApiClient().deserialize(response_mock, (NoteResponse,), False)
+
+        assert deserialized is not None
+
+        assert deserialized.model is not None
+        assert deserialized.warnings is not None
+        assert deserialized.errors is not None
 
 
 if __name__ == '__main__':

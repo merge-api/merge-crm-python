@@ -21,6 +21,8 @@ Name | Type | Description | Notes
 **converted_date** | **datetime, none_type** | When the lead was converted. | [optional] 
 **converted_contact** | **str, none_type** |  | [optional] 
 **converted_account** | **str, none_type** |  | [optional] 
+**remote_data** | [**[RemoteData], none_type**](RemoteData.md) |  | [optional] [readonly] 
+**remote_was_deleted** | **bool** |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

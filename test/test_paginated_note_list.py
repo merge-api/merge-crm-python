@@ -11,11 +11,13 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.note import Note
 globals()['Note'] = Note
 from MergeCRMClient.model.paginated_note_list import PaginatedNoteList
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestPaginatedNoteList(unittest.TestCase):
@@ -31,7 +33,22 @@ class TestPaginatedNoteList(unittest.TestCase):
         """Test PaginatedNoteList"""
         # FIXME: construct object with mandatory attributes with example values
         # model = PaginatedNoteList()  # noqa: E501
-        pass
+
+        """
+        No test json responses were defined for PaginatedNoteList
+        """
+        raw_json = None
+
+        if raw_json is None:
+            return
+
+        response_mock = MagicMock()
+        response_mock.data = raw_json
+
+        deserialized = ApiClient().deserialize(response_mock, (PaginatedNoteList,), False)
+
+        assert deserialized is not None
+
 
 
 if __name__ == '__main__':

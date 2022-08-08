@@ -11,9 +11,11 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.encoding_enum import EncodingEnum
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestEncodingEnum(unittest.TestCase):
@@ -29,8 +31,9 @@ class TestEncodingEnum(unittest.TestCase):
         """Test EncodingEnum"""
         # FIXME: construct object with mandatory attributes with example values
         # model = EncodingEnum()  # noqa: E501
-        pass
 
+        # no tests for enums
+        pass
 
 if __name__ == '__main__':
     unittest.main()

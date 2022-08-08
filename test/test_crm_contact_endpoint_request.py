@@ -11,11 +11,13 @@
 
 import sys
 import unittest
+from unittest.mock import MagicMock
 
 import MergeCRMClient
 from MergeCRMClient.model.contact_request import ContactRequest
 globals()['ContactRequest'] = ContactRequest
 from MergeCRMClient.model.crm_contact_endpoint_request import CRMContactEndpointRequest
+from MergeCRMClient.api_client import ApiClient
 
 
 class TestCRMContactEndpointRequest(unittest.TestCase):
@@ -31,7 +33,23 @@ class TestCRMContactEndpointRequest(unittest.TestCase):
         """Test CRMContactEndpointRequest"""
         # FIXME: construct object with mandatory attributes with example values
         # model = CRMContactEndpointRequest()  # noqa: E501
-        pass
+
+        """
+        No test json responses were defined for CRMContactEndpointRequest
+        """
+        raw_json = None
+
+        if raw_json is None:
+            return
+
+        response_mock = MagicMock()
+        response_mock.data = raw_json
+
+        deserialized = ApiClient().deserialize(response_mock, (CRMContactEndpointRequest,), False)
+
+        assert deserialized is not None
+
+        assert deserialized.model is not None
 
 
 if __name__ == '__main__':
